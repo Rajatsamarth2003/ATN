@@ -1,0 +1,38 @@
+{
+  "target": "bmv2",
+  "p4info": "build/p4infosen_int.p4.p4info.txtpb",
+  "bmv2_json": "build/p4infosen_int.json",
+  "table_entries": [
+    {
+      "table": "MyIngress.switch_id_tbl",
+      "default_action": true,
+      "action_name": "MyIngress.set_switch_id",
+      "action_params": { "sw_id": 2 }
+    },
+    {
+      "table": "MyIngress.ipv4_lpm",
+      "match": { "hdr.ipv4.dstAddr": ["10.0.1.0", 24] },
+      "action_name": "MyIngress.ipv4_forward",
+      "action_params": { "dstAddr": "00:00:00:00:00:00", "port": 1 }
+    },
+    {
+      "table": "MyIngress.ipv4_lpm",
+      "match": { "hdr.ipv4.dstAddr": ["10.0.2.0", 24] },
+      "action_name": "MyIngress.ipv4_forward",
+      "action_params": { "dstAddr": "00:00:00:00:00:00", "port": 2 }
+    },
+    {
+      "table": "MyIngress.ipv4_lpm",
+      "match": { "hdr.ipv4.dstAddr": ["10.0.3.0", 24] },
+      "action_name": "MyIngress.ipv4_forward",
+      "action_params": { "dstAddr": "00:00:00:00:00:00", "port": 2 }
+    },
+
+    {
+      "table": "MyEgress.int_insert_tbl",
+      "match": { "hdr.int_shim.hopCount": 1 },
+      "action_name": "MyEgress.insert_hop2",
+      "action_params": { "sw_id": 2, "t_type": 2, "t_prio": 2, "t_val": 0 }
+    }
+  ]
+}

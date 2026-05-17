@@ -1,0 +1,42 @@
+{
+    "hosts": {
+        "h1": {
+            "ip": "10.0.1.1/24",
+            "mac": "00:00:00:00:01:01",
+            "commands": [
+                "route add -net 10.0.2.0/24 dev eth0",
+                "route add -net 10.0.3.0/24 dev eth0",
+                "arp -i eth0 -s 10.0.2.1 00:00:00:00:02:01",
+                "arp -i eth0 -s 10.0.3.1 00:00:00:00:03:01"
+            ]
+        },
+        "h2": {
+            "ip": "10.0.2.1/24",
+            "mac": "00:00:00:00:02:01",
+            "commands": [
+                "route add -net 10.0.1.0/24 dev eth0",
+                "arp -i eth0 -s 10.0.1.1 00:00:00:00:01:01"
+            ]
+        },
+        "h3": {
+            "ip": "10.0.3.1/24",
+            "mac": "00:00:00:00:03:01",
+            "commands": [
+                "route add -net 10.0.1.0/24 dev eth0",
+                "route add -net 10.0.2.0/24 dev eth0"
+            ]
+        }
+    },
+    "switches": {
+        "s1": {"runtime_json": "topo/s1-runtime.json"},
+        "s2": {"runtime_json": "topo/s2-runtime.json"},
+        "s3": {"runtime_json": "topo/s3-runtime.json"}
+    },
+    "links": [
+        ["h1", "s1-p1"],
+        ["s1-p2", "s2-p1"],
+        ["s2-p2", "s3-p1"],
+        ["s3-p2", "h2"],
+        ["s3-p3", "h3"]
+    ]
+}
