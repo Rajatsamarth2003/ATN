@@ -184,22 +184,4 @@ You can always refer to the tutorial files provided in the P4 repository. These 
 
 In some cases, AI may generate additional files such as `.py` scripts for topology or controllers. However, for simple projects, these are usually not required. It is better to follow the approach used in the tutorials and work with JSON configuration files for defining runtime behavior.
 
-## Contact Information
 
-For any queries or support, please contact:
-Email: cabhishek1304@gmail.com
-
-## Credits
-
-This guide was prepared by Abhishek Chandurkar. Also the paper from which we chose and tried to implement the features is : 
-Information-Sensitive In-band Network Telemetry in
-P4-based Programmable Data Plane
-Zichen Xu, Ziye Lu, and Zuqing Zhu, Fellow, IEEE
-
-So, the credit for the ideas presented in the work would go to them only (not me, I only referred their work!)
-
-Also, the guide has excerpts from the github repo :  https://github.com/p4lang/tutorials
-I have simply brought everything together according to my experience while doing this project.
-
-```
-```
